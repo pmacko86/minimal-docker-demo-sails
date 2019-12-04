@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minimal-docker-demo-sails
+  labels:
+    app: minimal-docker-demo-sails
+spec:
+  # type: LoadBalancer
+  ports:
+  - port: 1337
+  selector:
+    app: minimal-docker-demo-sails
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minimal-docker-demo-sails
+spec:
+  selector:
+    matchLabels:
+      app: minimal-docker-demo-sails
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minimal-docker-demo-sails
+    spec:
+      containers:
+      - name: minimal-docker-demo-sails
+        image: minimal-docker-demo-sails
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 1337
+
