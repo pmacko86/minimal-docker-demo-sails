@@ -26,7 +26,7 @@ curl localhost:$PORT/message
 ```
 
 
-### Instructions for Kubernetes
+## Instructions for Kubernetes
 
 First, build the image using Docker as explained above.
 
